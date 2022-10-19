@@ -115,7 +115,7 @@ index be333699c515..a76aa52cde76 100644
 +	/* Enable VGA memory on Intel HD */
 +	if (i915_modparams.enable_hd_vgaarb && HAS_PCH_SPLIT(dev_priv)) {
 +		vga_get_uninterruptible(pdev, VGA_RSRC_LEGACY_IO);
-+		outb(inb(VGA_MSR_READ) | VGA_MSR_MEM_EN, VGA_MSR_WRITE);
++		outb(inb(VGA_MIS_R) | VGA_MIS_ENB_MEM_ACCESS, VGA_MIS_W);
 +		vga_set_legacy_decoding(pdev, VGA_RSRC_LEGACY_IO |
 +						VGA_RSRC_LEGACY_MEM |
 +						VGA_RSRC_NORMAL_IO |
@@ -130,7 +130,7 @@ index be333699c515..a76aa52cde76 100644
 +	/* Disable VGA memory on Intel HD */
 +	if (i915_modparams.enable_hd_vgaarb && HAS_PCH_SPLIT(dev_priv)) {
 +		vga_get_uninterruptible(pdev, VGA_RSRC_LEGACY_IO);
-+		outb(inb(VGA_MSR_READ) & ~VGA_MSR_MEM_EN, VGA_MSR_WRITE);
++		outb(inb(VGA_MIS_R) & ~VGA_MIS_ENB_MEM_ACCESS, VGA_MIS_W);
 +		vga_set_legacy_decoding(pdev, VGA_RSRC_LEGACY_IO |
 +						   VGA_RSRC_NORMAL_IO |
 +						   VGA_RSRC_NORMAL_MEM);
