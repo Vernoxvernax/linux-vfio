@@ -4,7 +4,7 @@
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-vfio
-pkgver=6.0.3.arch2
+pkgver=6.0.3.arch3
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -30,10 +30,10 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549' # David Runge <dvzrv@archlinux.org>
 )
-sha256sum=("SKIP"
-      "218dbe79025048a9677469db2a4a801d2dee33cea865a18ff728d28a4486fb75"
-      "b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77"
-      "5e928d515d931c2228eb4afd746fa5a0e050e44d10d7ee4090b0282d396bdc5f")
+sha256sum=('SKIP'
+      '218dbe79025048a9677469db2a4a801d2dee33cea865a18ff728d28a4486fb75'
+      'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
+      '5e928d515d931c2228eb4afd746fa5a0e050e44d10d7ee4090b0282d396bdc5f')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
