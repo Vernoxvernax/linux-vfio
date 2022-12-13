@@ -4,7 +4,7 @@
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-vfio
-pkgver=6.0.12.arch1
+pkgver=6.1.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -33,7 +33,7 @@ validpgpkeys=(
 sha256sum=('SKIP'
       '218dbe79025048a9677469db2a4a801d2dee33cea865a18ff728d28a4486fb75'
       'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
-      '5e928d515d931c2228eb4afd746fa5a0e050e44d10d7ee4090b0282d396bdc5f')
+      '02be0daa121ff66fd1de6efacf63695d12c087f33aff2577ff75ee96399239c0')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

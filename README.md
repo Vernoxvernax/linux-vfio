@@ -1,6 +1,8 @@
 # linux-vfio
 
-### Commits&Pushes are automatically run when the archlinux repo got a new tag.
+### Commits & Pushes are automatically run when the archlinux repo get's a new tag.
+
+##### Following breaking changes for the iommu-patches, I will *slowly* try to fix them within about 72 hours. Note that faulty commits might still pass, but will be removed afterwards.
 
 ## What is this?
 
