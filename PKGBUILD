@@ -4,7 +4,7 @@
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-vfio
-pkgver=6.1.10.arch1
+pkgver=6.1.11.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -67,8 +67,8 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
-  make htmldocs
+  make -j 32 all
+  make -j 32 htmldocs
 }
 
 _package() {
