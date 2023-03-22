@@ -4,18 +4,15 @@
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-vfio
-pkgver=6.2.7.arch1
+pkgver=6.2.8.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
-makedepends=(
-  bc kmod libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
-  git
-)
+makedepends=(bc libelf pahole cpio perl tar xz xmlto python-sphinx graphviz
+imagemagick texlive-latexextra git)
 options=('!strip')
 _srcname=archlinux-linux
 source=(
@@ -30,10 +27,10 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549' # David Runge <dvzrv@archlinux.org>
 )
-sha256sums=('SKIP'
-            'SKIP'
-            '911c014f0b0f9d94c09029da5d97fd4f7d5aea226ccee0aaf32888781dd6b73f'
-            '02be0daa121ff66fd1de6efacf63695d12c087f33aff2577ff75ee96399239c0')
+sha256sum=('SKIP'
+      '911c014f0b0f9d94c09029da5d97fd4f7d5aea226ccee0aaf32888781dd6b73f'
+      '218dbe79025048a9677469db2a4a801d2dee33cea865a18ff728d28a4486fb75'
+      '02be0daa121ff66fd1de6efacf63695d12c087f33aff2577ff75ee96399239c0')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -77,7 +74,6 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
 
   cd $_srcname
   local kernver="$(<version)"
