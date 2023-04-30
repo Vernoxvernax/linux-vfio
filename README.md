@@ -4,6 +4,8 @@
 
 ##### Following breaking changes for the iommu-patches, I will *slowly* try to fix them within about 72 hours. Note that faulty commits might still pass, but will be removed afterwards.
 
+Building with `testing-x86_64-build` from `devtools`.
+
 ## What is this?
 
 linux-vfio is the kernel for Arch linux, with the ACS Override and i915 VGA Arbiter patches applied. These patches, originally written by Alex Williamson and updated by Mark Weiman, allow certain motherboards to split PCIe IOMMU groups where it would not otherwise be possible. This is often used to allow a specific PCIe card (often a video card) to be assigned to the `vfio` driver, and attached to a virtual machine.
