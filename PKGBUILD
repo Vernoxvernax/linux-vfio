@@ -4,7 +4,7 @@
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-vfio
-pkgver=6.4.11.arch1
+pkgver=6.4.11.arch2
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -19,15 +19,9 @@ makedepends=(
   libelf
   pahole
   perl
+  python
   tar
   xz
-
-  # htmldocs
-  graphviz
-  imagemagick
-  python-sphinx
-  texlive-latexextra
-  xmlto
 )
 options=('!strip')
 _srcname=archlinux-linux
@@ -44,8 +38,8 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549' # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-      '5dc432df58fe4a2e7749861cec893162cd8e3afb4345db8628dd7bb6fb8a34e3'
-      '911c014f0b0f9d94c09029da5d97fd4f7d5aea226ccee0aaf32888781dd6b73f'
+      '32a585b8677dc96159e9dcd31c9bf902a1516b725f6169a565de52273a49ef6d'
+      'e7dccc1a7bfcb2767256e0b4e696db66da7c599bfc6c9d3d217417390b9fe178'
       '02be0daa121ff66fd1de6efacf63695d12c087f33aff2577ff75ee96399239c0')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -86,7 +80,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  _make htmldocs all
+  _make all
 }
 
 _package() {
@@ -122,7 +116,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  ZSTD_CLEVEL=19 _make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
