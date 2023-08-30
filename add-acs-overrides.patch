@@ -1,9 +1,48 @@
-From b41eb63d48790c92ac171fd92ad6355cb724e7ad Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?=C3=A9clairevoyant?=
- <848000+eclairevoyant@users.noreply.github.com>
-Date: Tue, 14 Mar 2023 17:06:39 -0400
-Subject: [PATCH 1/2] add-acs-overrides
+From 578d958c59002358abdeeb294c25ac28027b9f7a Mon Sep 17 00:00:00 2001
+From: Mark Weiman <mark.weiman@markzz.com>
+Date: Wed, 27 Jan 2021 13:28:09 -0500
+Subject: [PATCH] pci: Enable overrides for missing ACS capabilities (5.10.11+)
 
+This an updated version of Alex Williamson's patch from:
+https://lkml.org/lkml/2013/5/30/513
+
+Original commit message follows:
+---
+PCIe ACS (Access Control Services) is the PCIe 2.0+ feature that
+allows us to control whether transactions are allowed to be redirected
+in various subnodes of a PCIe topology.  For instance, if two
+endpoints are below a root port or downsteam switch port, the
+downstream port may optionally redirect transactions between the
+devices, bypassing upstream devices.  The same can happen internally
+on multifunction devices.  The transaction may never be visible to the
+upstream devices.
+
+One upstream device that we particularly care about is the IOMMU.  If
+a redirection occurs in the topology below the IOMMU, then the IOMMU
+cannot provide isolation between devices.  This is why the PCIe spec
+encourages topologies to include ACS support.  Without it, we have to
+assume peer-to-peer DMA within a hierarchy can bypass IOMMU isolation.
+
+Unfortunately, far too many topologies do not support ACS to make this
+a steadfast requirement.  Even the latest chipsets from Intel are only
+sporadically supporting ACS.  We have trouble getting interconnect
+vendors to include the PCIe spec required PCIe capability, let alone
+suggested features.
+
+Therefore, we need to add some flexibility.  The pcie_acs_override=
+boot option lets users opt-in specific devices or sets of devices to
+assume ACS support.  The "downstream" option assumes full ACS support
+on root ports and downstream switch ports.  The "multifunction"
+option assumes the subset of ACS features available on multifunction
+endpoints and upstream switch ports are supported.  The "id:nnnn:nnnn"
+option enables ACS support on devices matching the provided vendor
+and device IDs, allowing more strategic ACS overrides.  These options
+may be combined in any order.  A maximum of 16 id specific overrides
+are available.  It's suggested to use the most limited set of options
+necessary to avoid completely disabling ACS across the topology.
+Note to hardware vendors, we have facilities to permanently quirk
+specific devices which enforce isolation but not provide an ACS
+capability.  Please contact me to have your devicstarting
 ---
  .../admin-guide/kernel-parameters.txt         |   8 ++
  drivers/pci/quirks.c                          | 102 ++++++++++++++++++
