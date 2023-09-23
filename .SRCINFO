@@ -1,8 +1,8 @@
 pkgbase = linux-vfio
 	pkgdesc = Linux
-	pkgver = 6.5.4.arch2
+	pkgver = 6.5.5.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v6.5.4-arch2
+	url = https://github.com/archlinux/linux/commits/v6.5.5-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -16,7 +16,7 @@ pkgbase = linux-vfio
 	makedepends = tar
 	makedepends = xz
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.5.4-arch2
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v6.5.5-arch1
 	source = config
 	source = add-acs-overrides.patch
 	source = i915-vga-arbiter.patch
@@ -25,7 +25,7 @@ pkgbase = linux-vfio
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = 15f816dc12fb724a4d31dc7f756d96280ebc919d09dd9abc4e33f7dd005ab8d4
+	sha256sums = 15af656a9d7eaeda36c15f892f9a613d713dc35dcfa8857cee212969de427468
 	sha256sums = 6cd688b338e4da6246be8bdf7db5037c4aa1f16127e7e5539b3e160ac90a86a7
 	sha256sums = df7ad2253f16d7af2135f32751f206d31a1b2a79d8f15d46f2e800d0b26bf544
 
