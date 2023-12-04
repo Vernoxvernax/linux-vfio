@@ -4,7 +4,7 @@
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-vfio
-pkgver=6.6.3.arch1
+pkgver=6.6.4.arch1
 pkgrel=1
 pkgdesc='Linux'
 url="https://github.com/archlinux/linux"
@@ -43,11 +43,11 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=(
-      '28edfc3d4f90cd738f2a20f5a2d68510268176d6111f6278d8f495edfd9495a7'
-      '7b95b999be23a48347b6727110c32ee349891f0d171a2acb32a74bff6234b4cd'
-      '4e58f0bab792e42b818037bee7696fa9bd0e65ec2df8db079e97782fc2da6c70'
-      '3a926a083607f926e9008d64e7d1dc42b7008810dcc5ebc38cb7bfac5eb895f3'
-      '54d276b8b6f8adf0fd6fb767eb8d5da729d23103b8dddf6465eab3cb8c669a43'
+      '49e49660c93d8d6d58f118360d3ca8131695ec34669263ca8f041c876da93e45'
+      'e7861e2f5d770e41fc840baa1ba3708f0d8643cdacc35d1866d23886d3d25b2a'
+      'fbf89c61fdbef2af00ebbdc6c7019e41e426c9f84dce4fc0005cb0e681f0fff0'
+      '883343f6b05fbf95a6379919bf06d2b0816e1c93791c4c9b8a2d5622bb7ecbaf'
+      '29c7ac3a8b356ef5a6acd91207ff90f4937d588cbf52f7f2aa7c607b3bc94c93'
       '6cd688b338e4da6246be8bdf7db5037c4aa1f16127e7e5539b3e160ac90a86a7'
       'df7ad2253f16d7af2135f32751f206d31a1b2a79d8f15d46f2e800d0b26bf544'
 )
