@@ -4,12 +4,12 @@
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-vfio
-pkgver=6.6.6.arch1
+pkgver=6.6.10.arch1
 pkgrel=1
 pkgdesc='Linux'
 url="https://github.com/archlinux/linux"
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2.0-or-later)
 makedepends=(
   bc
   cpio
@@ -40,16 +40,16 @@ source=(
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
-  'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
+  '83BC8889351B5DEBBB68416EB8AC08600F108CDF'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=(
-      'ebf70a917934b13169e1be5b95c3b6c2fea5bc14e6dc144f1efb8a0016b224c8'
-      '2d552ff432f27596af7b2a4a336e1b3e6f2d0a69c555a33b8b21a5cb47d3c3e8'
-      '7805a8790008c2c926c346fef0c5c1134a9de13ef4ed43a22d7cad19aa57f56e'
-      '6992c1c9f3c5db2d66473847def0a2b103f6be1dcbb23501629d2d11955a1157'
-      'd37b55c1f7b2667f42dc1e6368dde2f9828c8799b743e53bfd44212e65610374'
-      '6cd688b338e4da6246be8bdf7db5037c4aa1f16127e7e5539b3e160ac90a86a7'
-      'df7ad2253f16d7af2135f32751f206d31a1b2a79d8f15d46f2e800d0b26bf544'
+      '9ee627e4c109aec7fca3eda5898e81d201af2c7eb2f7d9d7d94c1f0e1205546c'
+      '081cf3b473519179665e5ecba7800141df497d2f8581230b70afacc104462e5d'
+      'ad84324ce12f7c27664e79ebeaf4f7b6b52e1abe5777454b4d72c287c928f99a'
+      'acd8242ec1f56fdc9e71c55ef67c59c6f4f41892dca87e962e1d53059308b4e3'
+      'c2ff5802415aa94ed6ff550eade4d4f8741eef89633ec8521f37d00583304e8d'
+      '648feb8c03cc644ddb2c96cd7c85b3d18f1ab29073cbecc20c42940d7ebdcb46'
+      '1e51be896ab8c6224a55088eac7a14d20ca6a64a9842784b45639389033cfaba'
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -73,6 +73,9 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
+  # remove extra version suffix
+  sed -E 's&^(EXTRAVERSION =).*$&\1&' -i Makefile
+
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
@@ -85,7 +88,7 @@ prepare() {
 build() {
   cd $_srcname
   make all
-  make htmldocs
+  #make htmldocs
 }
 
 _package() {
@@ -125,7 +128,6 @@ _package() {
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
-  #rm "$modulesdir"/{source,build}
   rm "$modulesdir"/build
 }
 
@@ -233,7 +235,7 @@ _package-docs() {
 pkgname=(
   "$pkgbase"
   "$pkgbase-headers"
-  "$pkgbase-docs"
+  #"$pkgbase-docs"
 )
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {

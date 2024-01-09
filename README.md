@@ -1,10 +1,10 @@
 # linux-vfio
 
-### Commits & Pushes are automatically run when the archlinux repo get's a new tag.
+### Commits & Pushes are automatic
 
-##### Following breaking changes for the iommu-patches, I will *slowly* try to fix them within about 72 hours. Note that faulty commits might still pass, but will be removed afterwards.
+Build tested with `testing-x86_64-build` from `devtools`.
 
-Building with `testing-x86_64-build` from `devtools`.
+Most edits to the actual patches are adopted, with the utmost respect, from [aur/linux-vfio](https://aur.archlinux.org/packages/linux-vfio). Thank you!
 
 ## What is this?
 
