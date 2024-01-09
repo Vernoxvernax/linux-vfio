@@ -3,8 +3,10 @@
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 # Upstream: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgbase=linux-vfio
-pkgver=6.6.10.arch1
+_gitname="linux"
+_pkgname="$_gitname-vfio"
+pkgbase="$_pkgname"
+pkgver=6.6.10
 pkgrel=1
 pkgdesc='Linux'
 url="https://github.com/archlinux/linux"
@@ -28,8 +30,8 @@ makedepends=(
   texlive-latexextra
 )
 options=('!strip')
-_srcname=linux-${pkgver%.*}
-_srctag=v${pkgver%.*}-${pkgver##*.}
+_srcname=linux-$pkgver
+_srctag=v$pkgver-arch1
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
