@@ -6,7 +6,7 @@
 _gitname="linux"
 _pkgname="$_gitname-vfio"
 pkgbase="$_pkgname"
-pkgver=6.6.10
+pkgver=6.7
 pkgrel=1
 pkgdesc='Linux'
 url="https://github.com/archlinux/linux"
@@ -45,11 +45,11 @@ validpgpkeys=(
   '83BC8889351B5DEBBB68416EB8AC08600F108CDF'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=(
-      '9ee627e4c109aec7fca3eda5898e81d201af2c7eb2f7d9d7d94c1f0e1205546c'
-      '081cf3b473519179665e5ecba7800141df497d2f8581230b70afacc104462e5d'
-      'ad84324ce12f7c27664e79ebeaf4f7b6b52e1abe5777454b4d72c287c928f99a'
-      'acd8242ec1f56fdc9e71c55ef67c59c6f4f41892dca87e962e1d53059308b4e3'
-      'c2ff5802415aa94ed6ff550eade4d4f8741eef89633ec8521f37d00583304e8d'
+      'ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069'
+      'f81148e8461714fb0442efa369e10d2a69a2cc5b02f4347306cc373fb206df1d'
+      'b6abc3ca814e36b3d4126459b3125e2eb5af7f02ea76801e34e6b465767e11aa'
+      '15e4d248b927bf9296235c1d8346a7cfa1af59c5fa34c54c5daab60aa56679cf'
+      '5f41f5e3237dd6336b9166808588144f0e4cb672f11fc7dd53f9ec3ec1e90d6e'
       '648feb8c03cc644ddb2c96cd7c85b3d18f1ab29073cbecc20c42940d7ebdcb46'
       '1e51be896ab8c6224a55088eac7a14d20ca6a64a9842784b45639389033cfaba'
 )
