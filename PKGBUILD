@@ -7,7 +7,7 @@ _gitname="linux"
 _pkgname="$_gitname-vfio"
 pkgbase="$_pkgname"
 pkgver=6.7
-pkgrel=1
+pkgrel=3
 pkgdesc='Linux'
 url="https://github.com/archlinux/linux"
 arch=(x86_64)
@@ -31,13 +31,13 @@ makedepends=(
 )
 options=('!strip')
 _srcname=linux-$pkgver
-_srctag=v$pkgver-arch1
+_srctag=v${pkgver}-arch${pkgrel}
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   config  # the main kernel config file
   add-acs-overrides.patch  # updated from https://lkml.org/lkml/2013/5/30/513
-  i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
+  i915-vga-arbiter.patch   # updated from https://lkml.org/lkml/2014/5/9/517
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -47,9 +47,9 @@ validpgpkeys=(
 sha256sums=(
       'ef31144a2576d080d8c31698e83ec9f66bf97c677fa2aaf0d5bbb9f3345b1069'
       'f81148e8461714fb0442efa369e10d2a69a2cc5b02f4347306cc373fb206df1d'
-      'b6abc3ca814e36b3d4126459b3125e2eb5af7f02ea76801e34e6b465767e11aa'
-      '15e4d248b927bf9296235c1d8346a7cfa1af59c5fa34c54c5daab60aa56679cf'
-      '5f41f5e3237dd6336b9166808588144f0e4cb672f11fc7dd53f9ec3ec1e90d6e'
+      '1a2162ec671c508f9891cdb20e2a483238e2cce023e849fdedb8ae3dd58c114c'
+      '382ff485b265b4feaa851cc1ffcd9eb65b037c77efebbc543f9dc3d4f8e654e3'
+      '5fbc6ec81abdabd7c196f3609d629e334ea9dfda46da14af697545f49ce3bd28'
       '648feb8c03cc644ddb2c96cd7c85b3d18f1ab29073cbecc20c42940d7ebdcb46'
       '1e51be896ab8c6224a55088eac7a14d20ca6a64a9842784b45639389033cfaba'
 )
@@ -72,7 +72,7 @@ prepare() {
     src="${src%.zst}"
     [[ $src = *.patch ]] || continue
     echo "Applying patch $src..."
-    patch -Np1 < "../$src"
+    patch -Np1 -F100 -i "../$src"
   done
 
   # remove extra version suffix
@@ -108,10 +108,6 @@ _package() {
     KSMBD-MODULE
     VIRTUALBOX-GUEST-MODULES
     WIREGUARD-MODULE
-  )
-  replaces=(
-    virtualbox-guest-modules-arch
-    wireguard-arch
   )
 
   cd $_srcname
